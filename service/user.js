@@ -1,9 +1,13 @@
-import { Users } from '../dbs/model/index.js'
+import { Users, Articles } from '../dbs/model/index.js'
 
 class service {
   // 查找全部信息
   static async list({ page = 1, size = 20 }) {
     return await Users.findAndCountAll({
+        // raw: true,
+        include: [
+          { model: Articles }, 
+        ],
         attributes: ['id', 'name', 'sex', 'age', 'url'],
         offset: (page - 1) * size,
         limit: size

@@ -5,7 +5,7 @@ class usersController {
     static async list(ctx, next) {
       const size = 20;  // 每页10条数据
       const page = 1;  // 页数
-      const { count, rows }  = await service.list({page, size})
+      const { count, rows }  = await service.list({page, size});
       ctx.body = {
         code: 200,
         data: {
@@ -22,7 +22,7 @@ class usersController {
            return;
        }
        try {
-        await Users.create(ctx.request.body)
+        await service.create(ctx.request.body)
         ctx.body = '注册成功！'
        } catch (e) {
         ctx.body = '注册失败！';

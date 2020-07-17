@@ -14,29 +14,47 @@ class articlesController {
         }
       }
     }
+    static async find(ctx, next) {
+
+        const data  = await service.findId({page, size})
+        ctx.body = {
+          code: 200,
+          data: {
+            total: count,  //总数
+            body: rows  //请求回来的信息
+          }
+        }
+      }
     static async create(ctx) {
        try {
-        await Users.create(ctx.request.body)
-        ctx.body = '添加成功！'
+            await service.create(ctx.request.body)
+            ctx.body = '添加成功！';
        } catch (e) {
-        ctx.body = '添加失败！';
+            ctx.body = '添加失败！';
        }
     }
     static async update(ctx) {
         try {
-            await service.update(ctx.request.body)
+            const data = await service.update(ctx.request.body)
+            console.log(data)
+            if(data){
+                ctx.body = '没有该数据！'
+                return
+            } 
             ctx.body = '修改成功！'
         } catch (e) {
             ctx.body = '修改失败！';
         }
     }
     static async delete(ctx) {
-        try {
-            await service.delete(ctx.request.body)
-            ctx.body = '删除成功！'
-        } catch (e) {
-            ctx.body = '删除失败！';
-        }
+        await service.delete(ctx.request.body)
+        ctx.body = '删除成功！'
+        // try {
+        //     await service.delete(ctx.request.body)
+        //     ctx.body = '删除成功！'
+        // } catch (e) {
+        //     ctx.body = '删除失败！';
+        // }
     }
 }
 

@@ -1,9 +1,16 @@
-import { Articles } from '../dbs/model/index.js'
+import { Articles, Users, Articles_class, Massage } from '../dbs/model/index.js'
 
 class service {
   // 查找全部信息
   static async list({ page = 1, size = 20 }) {
     return await Articles.findAndCountAll({
+        // raw: true,
+        include: [
+          // { model: Massage, as: "comment", },
+          { model: Users, as: "author", attributes: ['id', 'name'] }, 
+          { model: Articles_class, as: "articles_class", attributes: ['id', 'name'] },
+        ],
+        attributes: ['id', 'title', 'content', 'url'],
         offset: (page - 1) * size,
         limit: size
     })
@@ -30,7 +37,7 @@ class service {
   }
   // 删除信息
   static async delete(data) {
-    return await Articles.destroy({where:{id:data}});
+    return await Articles.destroy({where:{id:data.id}});
   }
 }
 

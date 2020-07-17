@@ -19,6 +19,6 @@ router.put('/editarticler', articlesController.update)
 router.delete('/deletearticle', articlesController.delete)
 
 // 其它接口
-router.post('/upload', controller.util.save);
+router.post('/upload', utilController.save)
 
 export default router
