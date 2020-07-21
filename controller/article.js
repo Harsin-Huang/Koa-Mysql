@@ -1,7 +1,7 @@
 import service from '../service/article.js'
 const jwt = require('jsonwebtoken');
 
-class articlesController {
+export class articlesController {
     static async list(ctx, next) {
       const size = 20;  // 每页10条数据
       const page = 1;  // 页数
@@ -15,7 +15,6 @@ class articlesController {
       }
     }
     static async find(ctx, next) {
-
         const data  = await service.findId({page, size})
         ctx.body = {
           code: 200,
@@ -57,5 +56,3 @@ class articlesController {
         // }
     }
 }
-
-module.exports = articlesController

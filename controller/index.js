@@ -1,7 +1,7 @@
 import Router from 'koa-router'
-import usersController from '../controller/user.js'
-import articlesController from '../controller/article.js'
-import utilController from '../controller/util.js'
+import { usersController } from '../controller/user.js'
+import { articlesController } from '../controller/article.js'
+import { utilController } from '../controller/util.js'
 
 let router = new Router()
 

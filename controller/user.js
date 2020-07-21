@@ -1,7 +1,7 @@
 import service from '../service/user.js'
 const jwt = require('jsonwebtoken');
 
-class usersController {
+export class usersController {
     static async list(ctx, next) {
       const size = 20;  // 每页10条数据
       const page = 1;  // 页数
@@ -66,5 +66,3 @@ class usersController {
         }
     }
 }
-
-module.exports = usersController

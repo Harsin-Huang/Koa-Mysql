@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const sendToWormhole = require('stream-wormhole');
 
-class utilController {
+export class utilController {
     static async save(ctx) {
         const stream = await ctx.getFileStream();
         const fileName = stream.filename;
@@ -37,5 +37,3 @@ class utilController {
     }
 
 }
-
-module.exports = utilController
