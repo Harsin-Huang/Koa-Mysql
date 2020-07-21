@@ -27,7 +27,7 @@
     "moment": "^2.27.0",
     "mysql2": "^2.1.0",
     "pug": "^2.0.3",
-    "sequelize": "^4.41.2",
+    "sequelize": "^5.15.1",
     "stream-wormhole": "^1.1.0"
   },
   "devDependencies": {
